@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>体验</title>
+    <script src="js/vue.js"></script>
+   
+    <style> 
+    .box{width: 300px;
+        height: 300px;
+        background-color: red;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1> {{title}}</h1>
+          <!-- {{del()}} -->
+          {{checkbox}}
+          {{text}} 
+           <input type="text" v-model='title'>
+          <input type="checkbox" v-model='checkbox'>
+          <textarea v-model='text'>
+
+          </textarea> 
+          <!-- <ul>
+              <li v-for='(item,index) in users'>
+                 <span> {{item.name}}</span>
+                 <span> {{item.age}}</span>
+                 <span> {{item.sex}}</span>
+                 <button v-on:click='del(item,index,$event)'>删除</button>
+                  <ul>
+                     <li v-for='child in item.children'>
+                            <span> {{child.name}}</span>
+                            <span> {{child.age}}</span>
+                            <span> {{child.sex}}</span>
+                     </li>
+                 </ul> 
+                </li>
+          </ul> -->
+          <!-- <ul>
+              <li v-for='(i,d) in arr' v-show='false'>
+                  {{d}}
+              </li>
+          </ul>
+          <div class="box" v-if="show"></div>
+          <button v-on:click="show=!show">切换</button> -->
+
+          <!-- <div v-bind:index='show'></div> -->
+          <!-- <div v-text='title'>  </div> -->
+             
+        <div v-html='html'></div>
+
+    </div>
+    <script>
+    const vm=new Vue({
+        el:'#app', //el选项用来把当前的实例挂载到dom元素上
+        data:{
+            // 提供实例和模板需要的数据
+            title:'标题',
+            checkbox:false,
+            text:'',
+            show:false,
+            arr:Array(1000),
+            html:'<h1>我是谁</h1>',
+
+            users:[{
+                  name:'张三',
+                  age:18,
+                  sex:"male",
+                  children:[{
+                    name:'张三1',
+                  age:18,
+                  sex:"male"
+                  },
+                  {
+                    name:'张三1',
+                  age:18,
+                  sex:"male"
+                  },
+                 {
+                    name:'张三1',
+                  age:18,
+                  sex:"male"
+                  },
+                  {
+                    name:'张三1',
+                  age:18,
+                  sex:"male"
+                  }
+
+                ]
+                  },
+
+                  {
+                    name:'李四',
+                  age:19,
+                  sex:'female'  
+                  },
+                  {
+                    name:'王五',
+                  age:20,
+                  sex:'male'  
+                  },
+                  {
+                    name:'刘三',
+                  age:21,
+                  sex:'female'  
+                  }
+                
+                  ]
+
+
+        },
+        methods:{
+             // 提供实例和模板需要的方法
+             del(item,index){
+            //    this.users.splice(index,1)
+              this.users.push(item)
+                  console.log(event)
+             }
+
+        }
+    })
+    
+    </script>
+</body>
+</html>
