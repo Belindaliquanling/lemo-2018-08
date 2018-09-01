@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <script src="js/vue.js"></script>
+    <style>
+        
+    .tab{width: 500px;
+        height: 300px;
+        border: 1px solid #000;}
+    .tab header{
+        height:30px ;
+        border-bottom: 1px solid #000;
+        line-height: 30px;
+    }
+
+
+    .tab header .item{ 
+        display: inline-block;
+        padding:0 20px;
+        border-right: 1px solid #000;
+    }
+    .tab header .item.active{background-color: #ccc;}
+    </style>
+</head>
+<body>
+  <div id="app">
+
+<div class="tab">
+    <header>
+    <div class="item"
+    v-bind:class="{
+        active:index===selectIndex
+    }"
+    v-for="(item,index) in tabs"
+    v-on:click="selectIndex=index"
+     >
+            {{item.title}}
+    </div>
+
+
+    </header>
+
+    <main>
+
+        <h1 v-for="(item1,index) in tabs"
+        v-show="selectIndex===index"
+        
+        >
+
+            {{item1.content}} 
+        </h1>
+    </main>
+</div>
+
+
+  </div>  
+
+
+  <script>
+  const vm=new Vue({
+      el:"#app",
+      data:{
+       tabs:[
+           {title:"我的关注",
+           content:"我关注的内容部分"
+        
+        },
+           {title:"小说",
+           content:"小说的内容部分"
+        },
+           {title:"推荐",
+           content:"推荐的内容部分"
+        },
+        
+           {title:"导航",
+           content:"导航的内容部分"
+        }
+
+       ],
+
+       selectIndex:0
+
+      }
+
+  })
+  
+  </script>
+</body>
+</html>

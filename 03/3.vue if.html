@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue if</title>
+    <script src="js/vue.js"></script>
+    <style>
+       .active{background-color: red;}
+    </style>
+</head>
+<body>
+    <div id="app">
+      <div :class="{active:show}" @click='show=!show'>
+          123456789
+      </div>
+    </div>
+
+    <script>
+       const vm =new Vue({
+            el:'#app',
+            data:{
+                show:true
+            }
+        })
+    </script>
+
+</body>
+</html>

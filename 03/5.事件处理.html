@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+    .parent{
+        width: 500px;
+        height: 500px;
+        background-color: red;
+    }
+
+    .children{
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+   <div class="parent" @click.once="parent">
+
+    <div class="children" @click.stop="children">
+
+
+
+    </div>
+   </div>
+   <input type="text" @keydown.Ctrl.b='key'>
+    </div>
+    <script>
+      
+    const vm=new Vue({
+        el:"#app",
+     
+        methods:{
+            key(){
+
+             console.log(event.keyCode);
+                
+            },
+            parent(){
+                alert('parent')
+            },
+            children(){
+                // event.stopPropagation() 阻止冒泡事件
+                alert('children')
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>
