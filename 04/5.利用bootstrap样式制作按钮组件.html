@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +8,72 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="js/vue.js"></script>
     <script src="component/button.js"></script>
+    <script src="component/icon.js"></script>
+    <script src="component/table.js"></script>
+
 </head>
 <body>
     <div id="app">
-
+  
 
     </div>
     <script>
     const vm=new Vue({
        el:'#app',
+       data:{
+        column:[
+        '#',
+            'name',
+            'Age',
+            'Sex'
+        ],
+        data:[
+            {
+                id:1,
+                name:'张三',
+                age:20,
+                sex:'男'
+            },
+
+            {
+                id:1,
+                name:'张三',
+                age:20,
+                sex:'男'
+            }
+        ]
+           
+        
+
+       },
        template:`
        <div class='app'>
-       <Button color='primary' size='lg'>按钮一 </Button>
-       <Button color='success' size='sm'>按钮二 </Button>
-       <Button color='info' size='xs'>按钮三 </Button>
-       <Button size='xs'>按钮三 </Button>
+        <Table :column='column'
+        :data='data'
+        bordered 
+         hover 
+        striped
+        
+        />
+        <Table :column='column'
+        :data='data'
+        bordered 
+         hover 
+        striped
+        
+        />
+        <Table :column='column'
+        :data='data'
+        bordered 
+         hover 
+        striped
+        
+        />
+        
        </div>
-       `
+        `
 
-    })
+     })
     
     
     </script>
