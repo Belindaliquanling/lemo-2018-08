@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="js/vue.js"></script>
+     <script>
+        const Card={
+            props:{
+            fontColor:String
+            },
+            template:`
+         <Icon name='ok' />
+            
+            `    
+        }
+     </script>
+     <script src="component/button.js"></script>
+     <script src="component/icon.js"></script>
+     <script src="component/input.js"></script>
+     <script src="component/2input.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+
+
+    </div>
+    <script> 
+
+        // 局部组件 就是一个对象 相当于component 里的第二个参数
+
+     
+    const vm=new Vue({
+        el:'#app',
+        data:{
+            color:"",
+            value1:'变量1',
+            value2:'变量2'
+        },
+
+         template:` <div class='app'>
+            <h1>父实例里的变量 <br/>value1:{{value1}} <br/>value2:{{value2}}</h1>
+            <Input2 :value1.sync='value1' :value2.sync='value2'/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <input type='text' v-model='value1'/>
+             <input type='text' v-model='value2'/>
+            </div>`,   
+    })
+    
+    
+    </script>
+</body>
+</html>
