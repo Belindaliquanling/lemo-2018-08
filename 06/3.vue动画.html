@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+    .box{width:300px;
+        height: 300px;
+        background: red;}
+ /* v-if="true" 进入动画之前 入场的一个初始化 */
+         .fade-enter{
+        opacity :0;
+    }
+       /* 进入的一个过渡 */
+    .fade-enter-active{
+        transition:opacity 1s linear;
+    }
+     /* 进入到什么状态 */
+    .fade-enter-to{ opacity :0;}
+        
+    /* v-if="false" 进入动画之前 离开的一个初始化 */
+    .fade-leave{
+    opacity:1;
+    }
+     /* 离开的一个过渡 */
+    .fade-leave-active{
+        transition:opacity 1s linear;
+    }
+    /* 离开到什么状态 */
+    .fade-leave-to{
+        opacity :0;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+       
+    
+    </div>
+    <script>
+    new Vue({
+        el:'#app',
+       
+        template:`
+        <div class='app'>
+            <transition name="fade">
+       <div class="box" v-if='show'>
+
+       </div>
+       </transition>
+    <button @click='show=!show'>切换</button>
+            
+            
+            </div>
+        
+        
+        `,
+        data:{
+            show:true
+        }
+    })
+    
+    
+    </script>
+</body>
+</html>

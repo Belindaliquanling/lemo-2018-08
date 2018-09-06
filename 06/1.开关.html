@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+    .switcher{
+        width:50px;
+        height: 25px;
+        background: #ccc;
+        border-radius: 25px;
+        display: inline-block;
+        transition: background-color 0.2s linear;
+    }
+    
+    .switcher .btn{
+        width:20px;
+        height: 20px;
+        background-color: #fff;
+        margin:1px;
+        border-radius: 50%;
+        transition: transform 0.2s ease-in;
+    }
+    .switcher.switcher-on{
+            background-color: #2d8cf0;
+        }
+        .switcher.switcher-on .btn {
+            transform: translateX(22px);
+        }
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="components/Switcher.js"></script>
+</head>
+<body>
+    <div id="app">
+
+
+    </div>
+    <script>
+    new Vue({
+       el:'#app',
+       data:{
+           value:true
+       },
+      template:`
+      <div class='app'>
+        <Switcher v-model="value"/>
+        <Switcher v-model="value"/>
+        {{value}}
+        <button @click="value=!value">切换开关</button>
+        </div>
+      
+      
+      `
+    })
+    
+    </script>
+</body>
+</html>

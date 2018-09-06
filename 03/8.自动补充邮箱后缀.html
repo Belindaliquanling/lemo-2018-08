@@ -46,6 +46,7 @@
 </head>
 <body>
     <div id="app">
+       
       <div class="autocomplete">
       <input type="text" v-model="email"  @keydown.37.38.39.40.13.prevent='active'>
       <ul>
@@ -103,8 +104,12 @@
                 //  计算选项 自动计算
                 //  只要在computed选项 里面的函数  只要使用了实例里的成员
                     //  实例成员只要发生改变 computed选项里的函数就会重新计算结果
+
+                  
                 emailList(){
-                    retrun[
+                    if(!this.email) return []
+                    if(/[\@]/g.test(this.email)) return []
+                    return[
                         this.email+'@qq.com',
                         this.email+'@163.com'
                     ]
@@ -112,7 +117,7 @@
 
              }
 
-        }
+       
             
 
     })

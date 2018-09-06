@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/vue.js"></script>
+    <style>
+    .box{width:300px;
+        height: 300px;
+        background: red;}
+ /* v-if="true" 进入动画之前 入场的一个初始化 */
+          .fade-enter{
+        opacity :0;
+    }
+       /* 进入的一个过渡 */
+    .fade-enter-active{
+        transition:opacity 1s linear;
+    }
+     /* 进入到什么状态 */
+    .fade-enter-to{ opacity :0;}
+        
+    /* v-if="false" 进入动画之前 离开的一个初始化 */
+    .fade-leave{
+    opacity:1;
+    }
+     /* 离开的一个过渡 */
+    .fade-leave-active{
+        transition:opacity 1s linear;
+    }
+    /* 离开到什么状态 */
+    .fade-leave-to{
+        opacity :0;
+    } 
+@keyframes fadeIn{
+       from{
+           opacity:0;
+
+       }to{
+        opacity:1; 
+       }
+}
+@keyframes fadeOut{
+       from{
+           opacity:1;
+
+       }to{
+        opacity:0; 
+       }
+} 
+ .fadeIn {
+            animation: fadeIn 5s linear;
+        }
+
+        .fadeOut {
+            animation: fadeOut 5s linear;
+        }
+
+        .fade {
+            -webkit-animation-duration: 5s;
+            animation-duration: 5s;
+        }
+         
+    </style>
+</head>
+<body>
+    <div id="app">
+       
+    
+    </div>
+    <script>
+    new Vue({
+        el:'#app',
+       
+        template:`
+        <div class='app'>
+            <transition enter-active-class="fade fadeInLeft"
+            leave-active-class="fade fadeOutLeft"
+            @before-enter="beforeEnter"
+            @enter="enter"
+             @after-enter="afterEnter"
+            @enter-cancelled="enterCancelled"
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+            @leave-cancelled="leaveCancelled"                      
+                       
+            >
+       <div class="box" v-if='show'>
+
+       </div>
+       </transition>
+    <button @click='show=!show'>切换</button>
+            
+            
+            </div>
+        
+        
+        `,
+        methods:{
+         beforeEnter(){
+           console.log('动画进入之前')
+         },
+         enter(){
+            console.log('动画进入时')
+         },
+         afterEnter(){
+            console.log('动画进入之后')
+         },
+         enterCancelled(){
+            //  在动画还未完成时 取消动画该钩子就会运行
+            console.log('进入动画取消')
+         },
+         beforeLeave() {
+                    console.log('动画离开前')
+                },
+                leave() {
+                    console.log('动画离开时')
+                },
+                afterLeave() {
+                    console.log('离开后')
+                },
+                leaveCancelled(){
+                    console.log('离开动画取消')
+                },
+
+        },
+        data:{
+            show:true
+        }
+    })
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+    .switcher{
+        width:50px;
+        height: 25px;
+        background: #ccc;
+        border-radius: 25px;
+        display: inline-block;
+        transition: background-color 0.2s linear;
+    }
+    
+    .switcher .btn{
+        width:20px;
+        height: 20px;
+        background-color: #fff;
+        margin:1px;
+        border-radius: 50%;
+        transition: transform 0.2s ease-in;
+    }
+    .switcher.switcher-on{
+            background-color: #2d8cf0;
+        }
+        .switcher.switcher-on .btn {
+            transform: translateX(22px);
+        }
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="components/Switcher.js"></script>
+</head>
+<body>
+    <div id="app" >
+  <!-- 如果有el选项 首先会渲染el挂载元素里面的模板 -->
+
+    </div>
+    <script>
+    new Vue({
+       el:'#app',
+       data:{
+           value:true,
+           aa:false
+       },
+      template:`
+      <div class='app' >
+        <Switcher v-model="value" v-if='value' />
+        <Switcher v-model="value"/>
+        {{value}}
+        <button @click="aa=!aa" >切换开关</button>
+        </div> 
+      `,
+      methods:{
+        run(){
+            console.log('run')
+        }
+      },
+      beforeCreate(){
+        //   实例或组件 要开始被创建了
+        // 还没创建好之前 是不能使用实例中的任何成员的
+        // 针对要去做的ajax请求的组件可以预先在beforeCreate 提前
+        // console.log('vue实例将要开始创建了')
+        // console.log(this.run())
+        // setTimeout(()=>{
+        //    console.log("beforeCreate",this.value)
+        // },2000)
+
+      },
+      created(){
+        //   实例或组件 已经被创建好了
+        // create可以访问到当前实例的任何成员的
+        // 可以初始化一些数据 检测数据
+
+    //     console.log('vue实例已经创建好了');
+    //    console.log( this.value)
+        
+      },
+      beforeMount(){
+        //   开始挂载元素（挂载元素之前）
+        // console.log('开始把已经生成好的 html元素添加到dom中')
+        // 没挂载好之前是拿不到组件里面的东西的dom
+        // console.log(this)
+        // 如果想要获取挂载之前的一些东西，在beforeMount里面可操作
+      },
+      mounted(){
+        // console.log('实例已经挂载完成')
+        // console.log(this.$el)
+        // 主要是在这个过程之后我们再去获取组件的dom元素是最保险的
+      },
+      beforeUpdate(){
+        //   console.log('beforeUpadate')
+        //   console.log(this.value)
+        //  只有在你更改的那个数据 和模板有关联的时候才会 触发这个钩子 以及update
+        // 要让beforeUpdate和updated触发模板必须发生变化
+        // 模板更新之前
+      },
+      updated(){
+        //   模板更新之后
+        // console.log('upadated')
+      
+        //   console.log(this.value)
+      },
+      beforeDestroy(){
+    //   console.log('销毁之前')
+    //    实例是不会运行 beforeDestroy
+      },  
+     destroyed (){
+        // console.log('销毁之后')
+        //    实例是不会运行 destroyed
+     }
+     
+    })
+    
+    </script>
+</body>
+</html>
