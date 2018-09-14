@@ -5,8 +5,16 @@ import App from './App'
 // import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 // Vue.use(ElementUI) //add vue plugin
-import plugin from './plugins/index.js'
-Vue.use(plugin,{a:100})
+// import plugin from './plugins/index.js'
+// Vue.use(plugin,{a:100})
+
+//global filter
+// Vue.filter('Yen' ,function(value){
+//    return '$'+values
+// })
+ import Test from './components/Test'
+// import Test from './test'
+
 Vue.config.productionTip = false
 //1.局部混入 解决多个api相同的情况下但又不是全局
 //2.全局混入 vue.mixin()
@@ -36,16 +44,56 @@ Vue.directive('ff',{
     el.value=binding.value
   }
 })
-Vue.mixin({
-  data(){
-    return{
-      num:10010
-    }
-  }
-})
+// Vue.mixin({
+//   data(){
+//     return{
+//       num:10010
+//     }
+//   }
+// })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: { App },
-  template: '<App/>'
+  components: { Test },
+   template: `<Test :num="100" title="test"/>`
+  // render(h){
+
+    // createElement('组件或者html标签，option={}')
+    // createElement 这个函数是用来渲染组件的
+//     return   createElement(Test,{
+//       props:{
+//         //给组件添加爱props
+//            num:100,
+//            title:"标题"
+//       },
+//       attrs:{
+//        index:'11'
+//       },
+//       nativeOn:{
+// //给元素添加原生事件
+//       click(){
+//         console.log(12)
+//       }
+//       },
+       
+    
+//       on:{
+//         //给组件添加监听事件
+//         click(){
+//           console.log(11)
+//         }
+//       },
+//       // style:'background:red;'
+//       style:{
+//         background:'red'
+//       },
+//       class:'test'
+//     },'Test')
+ 
+  //   return h('button',{
+  //     style:{
+  //       background:'red'
+  //     }
+  //   },'这是一个div')
+  // }
 })
